@@ -14,6 +14,7 @@
 
 from thingsboard_gateway.connectors.converter import Converter, log
 from thingsboard_gateway.gateway.statistics_service import StatisticsService
+from datetime import timedelta
 
 
 class SNMPUplinkConverter(Converter):
@@ -44,6 +45,8 @@ class SNMPUplinkConverter(Converter):
                 result[config[0]].append({config[1]["key"]: data})
             elif isinstance(data, bytes):
                 result[config[0]].append({config[1]["key"]: data.decode("UTF-8")})
+            elif isinstance(data, timedelta):
+                result[config[0]].append({config[1]["key"]: str(data)})
             else:
                 result[config[0]].append({config[1]["key"]: data})
             log.debug(result)
