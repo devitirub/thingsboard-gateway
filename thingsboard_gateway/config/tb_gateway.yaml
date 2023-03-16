@@ -1,10 +1,10 @@
 thingsboard:
-  host: thingsboard.cloud
+  host: mqtt.itirub.com.br
   port: 1883
   remoteShell: false
   remoteConfiguration: false
   statistics:
-    enable: true
+    enable: false
     statsSendPeriodInSeconds: 3600
 #    configuration: statistics/statistics_linux.json
   deviceFiltering:
@@ -20,7 +20,7 @@ thingsboard:
     inactivityTimeoutSeconds: 120
     inactivityCheckPeriodSeconds: 10
   security:
-    accessToken: PUT_YOUR_GW_ACCESS_TOKEN_HERE
+    accessToken: qkxCx4XHlMppToen1Lkp
   qos: 1
 storage:
   type: memory
@@ -45,11 +45,11 @@ grpc:
   minTimeBetweenPingsMs: 10000
   minPingIntervalWithoutDataMs: 5000
 connectors:
-  -
-    name: MQTT Broker Connector
-    type: mqtt
-    configuration: mqtt.json
-
+  #  -
+  #    name: MQTT Broker Connector
+  #    type: mqtt
+  #    configuration: mqtt.json
+  #
 #  -
 #    name: Modbus Connector
 #    type: modbus
@@ -139,3 +139,9 @@ connectors:
 #    key: auto
 #    type: grpc
 #    configuration: grpc_connector_1.json
+#
+  -
+    name: MCDI Socket Connector
+    type: mcdi_socket
+    configuration: custom_mcdi_socket.json
+    class: CustomMCDISocketConnector
